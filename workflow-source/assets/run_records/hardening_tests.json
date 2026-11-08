@@ -1,0 +1,1038 @@
+[
+  {
+    "tag": "kb_extract_verbatim_policy",
+    "raw_content": "R03 版本1.0 退款须经售后审核；审核通过后预计1至3个工作日原路退回，客服不得保证具体到账时点。",
+    "extracted": {
+      "rule_id": "R03",
+      "version": "1.0",
+      "policy": "退款须经售后审核；审核通过后预计1至3个工作日原路退回，客服不得保证具体到账时点。"
+    }
+  },
+  {
+    "tag": "validate_valid",
+    "valid": true,
+    "error": "",
+    "ticket_id": "D1"
+  },
+  {
+    "tag": "validate_ticket_id_list",
+    "valid": false,
+    "error": "ticket_id不能为空",
+    "ticket_id": ""
+  },
+  {
+    "tag": "validate_ticket_id_empty",
+    "valid": false,
+    "error": "ticket_id不能为空",
+    "ticket_id": ""
+  },
+  {
+    "tag": "validate_single_role",
+    "valid": false,
+    "error": "消息条数必须为2至100条，实际1条",
+    "ticket_id": "D2"
+  },
+  {
+    "tag": "validate_bad_role",
+    "valid": false,
+    "error": "第0条消息角色不合法: admin（仅允许customer/agent）",
+    "ticket_id": "D3"
+  },
+  {
+    "tag": "validate_over_limit",
+    "valid": false,
+    "error": "对话全文合计20003字符超过20000上限，不截断，转人工复核",
+    "ticket_id": "D4"
+  },
+  {
+    "tag": "rulecheck_complete",
+    "rules_ok": true,
+    "reason": "规则覆盖完整"
+  },
+  {
+    "tag": "rulecheck_missing_R03",
+    "rules_ok": false,
+    "reason": "规则知识库检索不完整，缺失规则: ['R03']，转人工复核，不凭常识补齐"
+  },
+  {
+    "tag": "rulecheck_sameID_conflict",
+    "rules_ok": false,
+    "reason": "规则R01出现同ID不同policy的冲突"
+  },
+  {
+    "tag": "rulecheck_wrong_version",
+    "rules_ok": false,
+    "reason": "规则R01版本不是1.0: 2.0"
+  },
+  {
+    "tag": "strict_valid_pass",
+    "input": {
+      "category": "物流配送",
+      "category_confidence": 0.95,
+      "category_evidence": [
+        {
+          "message_index": 0,
+          "quote": "我的包裹三天没更新了。"
+        }
+      ],
+      "summary": "客户反馈包裹物流三天未更新，客服表示将联系物流核实。",
+      "checks": {
+        "R01": {
+          "rule_id": "R01",
+          "status": "pass",
+          "rule_quote": "客服不得辱骂、嘲讽或贬低客户。",
+          "reason": "客服礼貌，无辱骂行为",
+          "evidence": [
+            {
+              "message_index": 1,
+              "quote": "您好，我帮您联系物流核实。"
+            }
+          ]
+        },
+        "R02": {
+          "rule_id": "R02",
+          "status": "pass",
+          "rule_quote": "客服不得索取客户的账户密码、支付密码或支付验证码。",
+          "reason": "未索取任何密码",
+          "evidence": [
+            {
+              "message_index": 1,
+              "quote": "您好，我帮您联系物流核实。"
+            }
+          ]
+        },
+        "R03": {
+          "rule_id": "R03",
+          "status": "pass",
+          "rule_quote": "退款须经售后审核；审核通过后预计1至3个工作日原路退回，客服不得保证具体到账时点。",
+          "reason": "未涉及退款到账承诺",
+          "evidence": [
+            {
+              "message_index": 1,
+              "quote": "您好，我帮您联系物流核实。"
+            }
+          ]
+        }
+      },
+      "needs_review": false,
+      "review_reasons": []
+    },
+    "qc_status": "pass",
+    "needs_review": false,
+    "category_valid": true,
+    "review_reasons": [],
+    "summary": "客户反馈包裹物流三天未更新，客服表示将联系物流核实。"
+  },
+  {
+    "tag": "invalid_json_text",
+    "input": "{这根本不是合法JSON!!",
+    "qc_status": "undetermined",
+    "needs_review": true,
+    "category_valid": false,
+    "review_reasons": [
+      "代码校验异常，整条降级unknown并人工复核",
+      "(1)无效JSON: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)"
+    ],
+    "summary": ""
+  },
+  {
+    "tag": "rule_quote_short_substr",
+    "input": {
+      "category": "物流配送",
+      "category_confidence": 0.95,
+      "category_evidence": [
+        {
+          "message_index": 0,
+          "quote": "我的包裹三天没更新了。"
+        }
+      ],
+      "summary": "客户反馈包裹物流三天未更新，客服表示将联系物流核实。",
+      "checks": {
+        "R01": {
+          "rule_id": "R01",
+          "status": "pass",
+          "rule_quote": "客服",
+          "reason": "客服礼貌，无辱骂行为",
+          "evidence": [
+            {
+              "message_index": 1,
+              "quote": "您好，我帮您联系物流核实。"
+            }
+          ]
+        },
+        "R02": {
+          "rule_id": "R02",
+          "status": "pass",
+          "rule_quote": "客服不得索取客户的账户密码、支付密码或支付验证码。",
+          "reason": "未索取任何密码",
+          "evidence": [
+            {
+              "message_index": 1,
+              "quote": "您好，我帮您联系物流核实。"
+            }
+          ]
+        },
+        "R03": {
+          "rule_id": "R03",
+          "status": "pass",
+          "rule_quote": "退款须经售后审核；审核通过后预计1至3个工作日原路退回，客服不得保证具体到账时点。",
+          "reason": "未涉及退款到账承诺",
+          "evidence": [
+            {
+              "message_index": 1,
+              "quote": "您好，我帮您联系物流核实。"
+            }
+          ]
+        }
+      },
+      "needs_review": false,
+      "review_reasons": []
+    },
+    "qc_status": "undetermined",
+    "needs_review": true,
+    "category_valid": true,
+    "review_reasons": [
+      "代码校验异常，整条降级unknown并人工复核",
+      "(1)check R01 的rule_quote未逐字匹配规则库policy原文(假引用或标点差异): '客服'"
+    ],
+    "summary": "客户反馈包裹物流三天未更新，客服表示将联系物流核实。"
+  },
+  {
+    "tag": "rule_quote_punct_diff",
+    "input": {
+      "category": "物流配送",
+      "category_confidence": 0.95,
+      "category_evidence": [
+        {
+          "message_index": 0,
+          "quote": "我的包裹三天没更新了。"
+        }
+      ],
+      "summary": "客户反馈包裹物流三天未更新，客服表示将联系物流核实。",
+      "checks": {
+        "R01": {
+          "rule_id": "R01",
+          "status": "pass",
+          "rule_quote": "客服不得辱骂、嘲讽或贬低客户。",
+          "reason": "客服礼貌，无辱骂行为",
+          "evidence": [
+            {
+              "message_index": 1,
+              "quote": "您好，我帮您联系物流核实。"
+            }
+          ]
+        },
+        "R02": {
+          "rule_id": "R02",
+          "status": "pass",
+          "rule_quote": "客服不得索取客户的账户密码、支付密码或支付验证码",
+          "reason": "未索取任何密码",
+          "evidence": [
+            {
+              "message_index": 1,
+              "quote": "您好，我帮您联系物流核实。"
+            }
+          ]
+        },
+        "R03": {
+          "rule_id": "R03",
+          "status": "pass",
+          "rule_quote": "退款须经售后审核；审核通过后预计1至3个工作日原路退回，客服不得保证具体到账时点。",
+          "reason": "未涉及退款到账承诺",
+          "evidence": [
+            {
+              "message_index": 1,
+              "quote": "您好，我帮您联系物流核实。"
+            }
+          ]
+        }
+      },
+      "needs_review": false,
+      "review_reasons": []
+    },
+    "qc_status": "undetermined",
+    "needs_review": true,
+    "category_valid": true,
+    "review_reasons": [
+      "代码校验异常，整条降级unknown并人工复核",
+      "(1)check R02 的rule_quote未逐字匹配规则库policy原文(假引用或标点差异): '客服不得索取客户的账户密码、支付密码或支付验证码'"
+    ],
+    "summary": "客户反馈包裹物流三天未更新，客服表示将联系物流核实。"
+  },
+  {
+    "tag": "category_empty_list",
+    "input": {
+      "category": [],
+      "category_confidence": 0.95,
+      "category_evidence": [
+        {
+          "message_index": 0,
+          "quote": "我的包裹三天没更新了。"
+        }
+      ],
+      "summary": "客户反馈包裹物流三天未更新，客服表示将联系物流核实。",
+      "checks": {
+        "R01": {
+          "rule_id": "R01",
+          "status": "pass",
+          "rule_quote": "客服不得辱骂、嘲讽或贬低客户。",
+          "reason": "客服礼貌，无辱骂行为",
+          "evidence": [
+            {
+              "message_index": 1,
+              "quote": "您好，我帮您联系物流核实。"
+            }
+          ]
+        },
+        "R02": {
+          "rule_id": "R02",
+          "status": "pass",
+          "rule_quote": "客服不得索取客户的账户密码、支付密码或支付验证码。",
+          "reason": "未索取任何密码",
+          "evidence": [
+            {
+              "message_index": 1,
+              "quote": "您好，我帮您联系物流核实。"
+            }
+          ]
+        },
+        "R03": {
+          "rule_id": "R03",
+          "status": "pass",
+          "rule_quote": "退款须经售后审核；审核通过后预计1至3个工作日原路退回，客服不得保证具体到账时点。",
+          "reason": "未涉及退款到账承诺",
+          "evidence": [
+            {
+              "message_index": 1,
+              "quote": "您好，我帮您联系物流核实。"
+            }
+          ]
+        }
+      },
+      "needs_review": false,
+      "review_reasons": []
+    },
+    "qc_status": "undetermined",
+    "needs_review": true,
+    "category_valid": false,
+    "review_reasons": [
+      "代码校验异常，整条降级unknown并人工复核",
+      "(1)缺少category字段",
+      "(2)category必须是字符串: list"
+    ],
+    "summary": "客户反馈包裹物流三天未更新，客服表示将联系物流核实。"
+  },
+  {
+    "tag": "category_empty_dict",
+    "input": {
+      "category": {},
+      "category_confidence": 0.95,
+      "category_evidence": [
+        {
+          "message_index": 0,
+          "quote": "我的包裹三天没更新了。"
+        }
+      ],
+      "summary": "客户反馈包裹物流三天未更新，客服表示将联系物流核实。",
+      "checks": {
+        "R01": {
+          "rule_id": "R01",
+          "status": "pass",
+          "rule_quote": "客服不得辱骂、嘲讽或贬低客户。",
+          "reason": "客服礼貌，无辱骂行为",
+          "evidence": [
+            {
+              "message_index": 1,
+              "quote": "您好，我帮您联系物流核实。"
+            }
+          ]
+        },
+        "R02": {
+          "rule_id": "R02",
+          "status": "pass",
+          "rule_quote": "客服不得索取客户的账户密码、支付密码或支付验证码。",
+          "reason": "未索取任何密码",
+          "evidence": [
+            {
+              "message_index": 1,
+              "quote": "您好，我帮您联系物流核实。"
+            }
+          ]
+        },
+        "R03": {
+          "rule_id": "R03",
+          "status": "pass",
+          "rule_quote": "退款须经售后审核；审核通过后预计1至3个工作日原路退回，客服不得保证具体到账时点。",
+          "reason": "未涉及退款到账承诺",
+          "evidence": [
+            {
+              "message_index": 1,
+              "quote": "您好，我帮您联系物流核实。"
+            }
+          ]
+        }
+      },
+      "needs_review": false,
+      "review_reasons": []
+    },
+    "qc_status": "undetermined",
+    "needs_review": true,
+    "category_valid": false,
+    "review_reasons": [
+      "代码校验异常，整条降级unknown并人工复核",
+      "(1)缺少category字段",
+      "(2)category必须是字符串: dict"
+    ],
+    "summary": "客户反馈包裹物流三天未更新，客服表示将联系物流核实。"
+  },
+  {
+    "tag": "rule_id_dict",
+    "input": {
+      "category": "物流配送",
+      "category_confidence": 0.95,
+      "category_evidence": [
+        {
+          "message_index": 0,
+          "quote": "我的包裹三天没更新了。"
+        }
+      ],
+      "summary": "客户反馈包裹物流三天未更新，客服表示将联系物流核实。",
+      "checks": {
+        "R01": {
+          "rule_id": "R01",
+          "status": "pass",
+          "rule_quote": "客服不得辱骂、嘲讽或贬低客户。",
+          "reason": "客服礼貌，无辱骂行为",
+          "evidence": [
+            {
+              "message_index": 1,
+              "quote": "您好，我帮您联系物流核实。"
+            }
+          ]
+        },
+        "R02": {
+          "rule_id": {},
+          "status": "pass",
+          "rule_quote": "客服不得索取客户的账户密码、支付密码或支付验证码。",
+          "reason": "未索取任何密码",
+          "evidence": [
+            {
+              "message_index": 1,
+              "quote": "您好，我帮您联系物流核实。"
+            }
+          ]
+        },
+        "R03": {
+          "rule_id": "R03",
+          "status": "pass",
+          "rule_quote": "退款须经售后审核；审核通过后预计1至3个工作日原路退回，客服不得保证具体到账时点。",
+          "reason": "未涉及退款到账承诺",
+          "evidence": [
+            {
+              "message_index": 1,
+              "quote": "您好，我帮您联系物流核实。"
+            }
+          ]
+        }
+      },
+      "needs_review": false,
+      "review_reasons": []
+    },
+    "qc_status": "undetermined",
+    "needs_review": true,
+    "category_valid": true,
+    "review_reasons": [
+      "代码校验异常，整条降级unknown并人工复核",
+      "(1)check R02 的rule_id与键不符: {}"
+    ],
+    "summary": "客户反馈包裹物流三天未更新，客服表示将联系物流核实。"
+  },
+  {
+    "tag": "checks_extra_key",
+    "input": {
+      "category": "物流配送",
+      "category_confidence": 0.95,
+      "category_evidence": [
+        {
+          "message_index": 0,
+          "quote": "我的包裹三天没更新了。"
+        }
+      ],
+      "summary": "客户反馈包裹物流三天未更新，客服表示将联系物流核实。",
+      "checks": {
+        "R01": {
+          "rule_id": "R01",
+          "status": "pass",
+          "rule_quote": "客服不得辱骂、嘲讽或贬低客户。",
+          "reason": "客服礼貌，无辱骂行为",
+          "evidence": [
+            {
+              "message_index": 1,
+              "quote": "您好，我帮您联系物流核实。"
+            }
+          ]
+        },
+        "R02": {
+          "rule_id": "R02",
+          "status": "pass",
+          "rule_quote": "客服不得索取客户的账户密码、支付密码或支付验证码。",
+          "reason": "未索取任何密码",
+          "evidence": [
+            {
+              "message_index": 1,
+              "quote": "您好，我帮您联系物流核实。"
+            }
+          ]
+        },
+        "R03": {
+          "rule_id": "R03",
+          "status": "pass",
+          "rule_quote": "退款须经售后审核；审核通过后预计1至3个工作日原路退回，客服不得保证具体到账时点。",
+          "reason": "未涉及退款到账承诺",
+          "evidence": [
+            {
+              "message_index": 1,
+              "quote": "您好，我帮您联系物流核实。"
+            }
+          ]
+        },
+        "R04": {
+          "rule_id": "R04",
+          "status": "pass",
+          "rule_quote": "x",
+          "reason": "y",
+          "evidence": []
+        }
+      },
+      "needs_review": false,
+      "review_reasons": []
+    },
+    "qc_status": "undetermined",
+    "needs_review": true,
+    "category_valid": true,
+    "review_reasons": [
+      "代码校验异常，整条降级unknown并人工复核",
+      "(1)checks必须恰好包含R01/R02/R03，实际: ['R01', 'R02', 'R03', 'R04']"
+    ],
+    "summary": "客户反馈包裹物流三天未更新，客服表示将联系物流核实。"
+  },
+  {
+    "tag": "confidence_nan",
+    "input": {
+      "category": "物流配送",
+      "category_confidence": NaN,
+      "category_evidence": [
+        {
+          "message_index": 0,
+          "quote": "我的包裹三天没更新了。"
+        }
+      ],
+      "summary": "客户反馈包裹物流三天未更新，客服表示将联系物流核实。",
+      "checks": {
+        "R01": {
+          "rule_id": "R01",
+          "status": "pass",
+          "rule_quote": "客服不得辱骂、嘲讽或贬低客户。",
+          "reason": "客服礼貌，无辱骂行为",
+          "evidence": [
+            {
+              "message_index": 1,
+              "quote": "您好，我帮您联系物流核实。"
+            }
+          ]
+        },
+        "R02": {
+          "rule_id": "R02",
+          "status": "pass",
+          "rule_quote": "客服不得索取客户的账户密码、支付密码或支付验证码。",
+          "reason": "未索取任何密码",
+          "evidence": [
+            {
+              "message_index": 1,
+              "quote": "您好，我帮您联系物流核实。"
+            }
+          ]
+        },
+        "R03": {
+          "rule_id": "R03",
+          "status": "pass",
+          "rule_quote": "退款须经售后审核；审核通过后预计1至3个工作日原路退回，客服不得保证具体到账时点。",
+          "reason": "未涉及退款到账承诺",
+          "evidence": [
+            {
+              "message_index": 1,
+              "quote": "您好，我帮您联系物流核实。"
+            }
+          ]
+        }
+      },
+      "needs_review": false,
+      "review_reasons": []
+    },
+    "qc_status": "undetermined",
+    "needs_review": true,
+    "category_valid": true,
+    "review_reasons": [
+      "代码校验异常，整条降级unknown并人工复核",
+      "(1)category_confidence必须是有限数字"
+    ],
+    "summary": "客户反馈包裹物流三天未更新，客服表示将联系物流核实。"
+  },
+  {
+    "tag": "check_missing_reason",
+    "input": {
+      "category": "物流配送",
+      "category_confidence": 0.95,
+      "category_evidence": [
+        {
+          "message_index": 0,
+          "quote": "我的包裹三天没更新了。"
+        }
+      ],
+      "summary": "客户反馈包裹物流三天未更新，客服表示将联系物流核实。",
+      "checks": {
+        "R01": {
+          "rule_id": "R01",
+          "status": "pass",
+          "rule_quote": "客服不得辱骂、嘲讽或贬低客户。",
+          "reason": "客服礼貌，无辱骂行为",
+          "evidence": [
+            {
+              "message_index": 1,
+              "quote": "您好，我帮您联系物流核实。"
+            }
+          ]
+        },
+        "R02": {
+          "rule_id": "R02",
+          "status": "pass",
+          "rule_quote": "客服不得索取客户的账户密码、支付密码或支付验证码。",
+          "reason": "未索取任何密码",
+          "evidence": [
+            {
+              "message_index": 1,
+              "quote": "您好，我帮您联系物流核实。"
+            }
+          ]
+        },
+        "R03": {
+          "rule_id": "R03",
+          "status": "pass",
+          "rule_quote": "退款须经售后审核；审核通过后预计1至3个工作日原路退回，客服不得保证具体到账时点。",
+          "evidence": [
+            {
+              "message_index": 1,
+              "quote": "您好，我帮您联系物流核实。"
+            }
+          ]
+        }
+      },
+      "needs_review": false,
+      "review_reasons": []
+    },
+    "qc_status": "undetermined",
+    "needs_review": true,
+    "category_valid": true,
+    "review_reasons": [
+      "代码校验异常，整条降级unknown并人工复核",
+      "(1)check R03 缺少reason"
+    ],
+    "summary": "客户反馈包裹物流三天未更新，客服表示将联系物流核实。"
+  },
+  {
+    "tag": "check_missing_evidence",
+    "input": {
+      "category": "物流配送",
+      "category_confidence": 0.95,
+      "category_evidence": [
+        {
+          "message_index": 0,
+          "quote": "我的包裹三天没更新了。"
+        }
+      ],
+      "summary": "客户反馈包裹物流三天未更新，客服表示将联系物流核实。",
+      "checks": {
+        "R01": {
+          "rule_id": "R01",
+          "status": "pass",
+          "rule_quote": "客服不得辱骂、嘲讽或贬低客户。",
+          "reason": "客服礼貌，无辱骂行为",
+          "evidence": [
+            {
+              "message_index": 1,
+              "quote": "您好，我帮您联系物流核实。"
+            }
+          ]
+        },
+        "R02": {
+          "rule_id": "R02",
+          "status": "pass",
+          "rule_quote": "客服不得索取客户的账户密码、支付密码或支付验证码。",
+          "reason": "未索取任何密码"
+        },
+        "R03": {
+          "rule_id": "R03",
+          "status": "pass",
+          "rule_quote": "退款须经售后审核；审核通过后预计1至3个工作日原路退回，客服不得保证具体到账时点。",
+          "reason": "未涉及退款到账承诺",
+          "evidence": [
+            {
+              "message_index": 1,
+              "quote": "您好，我帮您联系物流核实。"
+            }
+          ]
+        }
+      },
+      "needs_review": false,
+      "review_reasons": []
+    },
+    "qc_status": "undetermined",
+    "needs_review": true,
+    "category_valid": true,
+    "review_reasons": [
+      "代码校验异常，整条降级unknown并人工复核",
+      "(1)check R02 evidence必须是数组"
+    ],
+    "summary": "客户反馈包裹物流三天未更新，客服表示将联系物流核实。"
+  },
+  {
+    "tag": "illegal_category",
+    "input": {
+      "category": "咨询建议",
+      "category_confidence": 0.95,
+      "category_evidence": [
+        {
+          "message_index": 0,
+          "quote": "我的包裹三天没更新了。"
+        }
+      ],
+      "summary": "客户反馈包裹物流三天未更新，客服表示将联系物流核实。",
+      "checks": {
+        "R01": {
+          "rule_id": "R01",
+          "status": "pass",
+          "rule_quote": "客服不得辱骂、嘲讽或贬低客户。",
+          "reason": "客服礼貌，无辱骂行为",
+          "evidence": [
+            {
+              "message_index": 1,
+              "quote": "您好，我帮您联系物流核实。"
+            }
+          ]
+        },
+        "R02": {
+          "rule_id": "R02",
+          "status": "pass",
+          "rule_quote": "客服不得索取客户的账户密码、支付密码或支付验证码。",
+          "reason": "未索取任何密码",
+          "evidence": [
+            {
+              "message_index": 1,
+              "quote": "您好，我帮您联系物流核实。"
+            }
+          ]
+        },
+        "R03": {
+          "rule_id": "R03",
+          "status": "pass",
+          "rule_quote": "退款须经售后审核；审核通过后预计1至3个工作日原路退回，客服不得保证具体到账时点。",
+          "reason": "未涉及退款到账承诺",
+          "evidence": [
+            {
+              "message_index": 1,
+              "quote": "您好，我帮您联系物流核实。"
+            }
+          ]
+        }
+      },
+      "needs_review": false,
+      "review_reasons": []
+    },
+    "qc_status": "undetermined",
+    "needs_review": true,
+    "category_valid": false,
+    "review_reasons": [
+      "代码校验异常，整条降级unknown并人工复核",
+      "(1)category不属于合法五类: 咨询建议"
+    ],
+    "summary": "客户反馈包裹物流三天未更新，客服表示将联系物流核实。"
+  },
+  {
+    "tag": "category_evidence_not_customer",
+    "input": {
+      "category": "物流配送",
+      "category_confidence": 0.95,
+      "category_evidence": [
+        {
+          "message_index": 1,
+          "quote": "您好，我帮您联系物流核实。"
+        }
+      ],
+      "summary": "客户反馈包裹物流三天未更新，客服表示将联系物流核实。",
+      "checks": {
+        "R01": {
+          "rule_id": "R01",
+          "status": "pass",
+          "rule_quote": "客服不得辱骂、嘲讽或贬低客户。",
+          "reason": "客服礼貌，无辱骂行为",
+          "evidence": [
+            {
+              "message_index": 1,
+              "quote": "您好，我帮您联系物流核实。"
+            }
+          ]
+        },
+        "R02": {
+          "rule_id": "R02",
+          "status": "pass",
+          "rule_quote": "客服不得索取客户的账户密码、支付密码或支付验证码。",
+          "reason": "未索取任何密码",
+          "evidence": [
+            {
+              "message_index": 1,
+              "quote": "您好，我帮您联系物流核实。"
+            }
+          ]
+        },
+        "R03": {
+          "rule_id": "R03",
+          "status": "pass",
+          "rule_quote": "退款须经售后审核；审核通过后预计1至3个工作日原路退回，客服不得保证具体到账时点。",
+          "reason": "未涉及退款到账承诺",
+          "evidence": [
+            {
+              "message_index": 1,
+              "quote": "您好，我帮您联系物流核实。"
+            }
+          ]
+        }
+      },
+      "needs_review": false,
+      "review_reasons": []
+    },
+    "qc_status": "undetermined",
+    "needs_review": true,
+    "category_valid": true,
+    "review_reasons": [
+      "代码校验异常，整条降级unknown并人工复核",
+      "(1)分类证据只允许来自customer消息，但index 1 角色为 agent"
+    ],
+    "summary": "客户反馈包裹物流三天未更新，客服表示将联系物流核实。"
+  },
+  {
+    "tag": "check_evidence_not_agent",
+    "input": {
+      "category": "物流配送",
+      "category_confidence": 0.95,
+      "category_evidence": [
+        {
+          "message_index": 0,
+          "quote": "我的包裹三天没更新了。"
+        }
+      ],
+      "summary": "客户反馈包裹物流三天未更新，客服表示将联系物流核实。",
+      "checks": {
+        "R01": {
+          "rule_id": "R01",
+          "status": "pass",
+          "rule_quote": "客服不得辱骂、嘲讽或贬低客户。",
+          "reason": "客服礼貌，无辱骂行为",
+          "evidence": [
+            {
+              "message_index": 0,
+              "quote": "我的包裹三天没更新了。"
+            }
+          ]
+        },
+        "R02": {
+          "rule_id": "R02",
+          "status": "pass",
+          "rule_quote": "客服不得索取客户的账户密码、支付密码或支付验证码。",
+          "reason": "未索取任何密码",
+          "evidence": [
+            {
+              "message_index": 1,
+              "quote": "您好，我帮您联系物流核实。"
+            }
+          ]
+        },
+        "R03": {
+          "rule_id": "R03",
+          "status": "pass",
+          "rule_quote": "退款须经售后审核；审核通过后预计1至3个工作日原路退回，客服不得保证具体到账时点。",
+          "reason": "未涉及退款到账承诺",
+          "evidence": [
+            {
+              "message_index": 1,
+              "quote": "您好，我帮您联系物流核实。"
+            }
+          ]
+        }
+      },
+      "needs_review": false,
+      "review_reasons": []
+    },
+    "qc_status": "undetermined",
+    "needs_review": true,
+    "category_valid": true,
+    "review_reasons": [
+      "代码校验异常，整条降级unknown并人工复核",
+      "(1)质检证据只允许来自agent消息，但index 0 角色为 customer"
+    ],
+    "summary": "客户反馈包裹物流三天未更新，客服表示将联系物流核实。"
+  },
+  {
+    "tag": "fake_quote",
+    "input": {
+      "category": "物流配送",
+      "category_confidence": 0.95,
+      "category_evidence": [
+        {
+          "message_index": 0,
+          "quote": "我的包裹三天没更新了。"
+        }
+      ],
+      "summary": "客户反馈包裹物流三天未更新，客服表示将联系物流核实。",
+      "checks": {
+        "R01": {
+          "rule_id": "R01",
+          "status": "pass",
+          "rule_quote": "客服不得辱骂、嘲讽或贬低客户。",
+          "reason": "客服礼貌，无辱骂行为",
+          "evidence": [
+            {
+              "message_index": 1,
+              "quote": "您好我帮您联系"
+            }
+          ]
+        },
+        "R02": {
+          "rule_id": "R02",
+          "status": "pass",
+          "rule_quote": "客服不得索取客户的账户密码、支付密码或支付验证码。",
+          "reason": "未索取任何密码",
+          "evidence": [
+            {
+              "message_index": 1,
+              "quote": "您好，我帮您联系物流核实。"
+            }
+          ]
+        },
+        "R03": {
+          "rule_id": "R03",
+          "status": "pass",
+          "rule_quote": "退款须经售后审核；审核通过后预计1至3个工作日原路退回，客服不得保证具体到账时点。",
+          "reason": "未涉及退款到账承诺",
+          "evidence": [
+            {
+              "message_index": 1,
+              "quote": "您好，我帮您联系物流核实。"
+            }
+          ]
+        }
+      },
+      "needs_review": false,
+      "review_reasons": []
+    },
+    "qc_status": "undetermined",
+    "needs_review": true,
+    "category_valid": true,
+    "review_reasons": [
+      "代码校验异常，整条降级unknown并人工复核",
+      "(1)引用不是连续原文（index 1）：'您好我帮您联系'"
+    ],
+    "summary": "客户反馈包裹物流三天未更新，客服表示将联系物流核实。"
+  },
+  {
+    "tag": "batch_parse_valid",
+    "parse_ok": true,
+    "error": "",
+    "ticket_ids": [
+      "D1"
+    ],
+    "duplicate_ids": []
+  },
+  {
+    "tag": "batch_parse_dup_id",
+    "parse_ok": false,
+    "error": "批次中ticket_id重复，整批拒绝: ['D1']",
+    "ticket_ids": [
+      "D1"
+    ],
+    "duplicate_ids": [
+      "D1"
+    ]
+  },
+  {
+    "tag": "batch_parse_missing_id",
+    "parse_ok": false,
+    "error": "第0条记录缺失ticket_id",
+    "ticket_ids": [],
+    "duplicate_ids": []
+  },
+  {
+    "tag": "batch_parse_empty",
+    "parse_ok": false,
+    "error": "记录数必须为1至50条，实际0条",
+    "ticket_ids": [],
+    "duplicate_ids": []
+  },
+  {
+    "tag": "batch_parse_too_many",
+    "parse_ok": false,
+    "error": "记录数必须为1至50条，实际51条",
+    "ticket_ids": [],
+    "duplicate_ids": []
+  },
+  {
+    "tag": "batch_aggregate_revalidation",
+    "summary": {
+      "total": 3,
+      "pass_count": 1,
+      "violation_count": 0,
+      "undetermined_count": 2,
+      "review_count": 2,
+      "category_counts": {
+        "物流配送": 1,
+        "无分类": 2
+      },
+      "rule_violation_counts": {},
+      "review_records": [
+        "BR2: 批量复验未通过：缺少必需字段: ['schema_version', 'category', 'category_valid', 'checks', 'qc_status', 'route', 'suggested_route', 'action', 'validation', 'semantic_review']；checks缺失或不是对象",
+        "BR2: 批量复验未通过：缺少必需字段: ['schema_version', 'category', 'category_valid', 'checks', 'qc_status', 'route', 'suggested_route', 'action', 'validation', 'semantic_review']；checks缺失或不是对象",
+        "NC3: 批量复验未通过：分类证据quote未命中customer原文: '这句话根本不在客户消息里'",
+        "NC3: 批量复验未通过：分类证据quote未命中customer原文: '这句话根本不在客户消息里'"
+      ],
+      "revalidation_failed_count": 2,
+      "results": [
+        {
+          "ticket_id": "OK1",
+          "qc_status": "pass",
+          "needs_review": false,
+          "category": "物流配送",
+          "category_valid": true,
+          "revalidation_ok": true,
+          "result_json": "{\"category\": \"物流配送\", \"category_confidence\": 0.95, \"category_evidence\": [{\"message_index\": 0, \"quote\": \"我的包裹三天没更新了。\"}], \"summary\": \"客户反馈包裹物流三天未更新，客服表示将联系物流核实。\", \"checks\": {\"R01\": {\"rule_id\": \"R01\", \"status\": \"pass\", \"rule_quote\": \"客服不得辱骂、嘲讽或贬低客户。\", \"reason\": \"客服礼貌，无辱骂行为\", \"evidence\": [{\"message_index\": 1, \"quote\": \"您好，我帮您联系物流核实。\"}]}, \"R02\": {\"rule_id\": \"R02\", \"status\": \"pass\", \"rule_quote\": \"客服不得索取客户的账户密码、支付密码或支付验证码。\", \"reason\": \"未索取任何密码\", \"evidence\": [{\"message_index\": 1, \"quote\": \"您好，我帮您联系物流核实。\"}]}, \"R03\": {\"rule_id\": \"R03\", \"status\": \"pass\", \"rule_quote\": \"退款须经售后审核；审核通过后预计1至3个工作日原路退回，客服不得保证具体到账时点。\", \"reason\": \"未涉及退款到账承诺\", \"evidence\": [{\"message_index\": 1, \"quote\": \"您好，我帮您联系物流核实。\"}]}}, \"needs_review\": false, \"review_reasons\": [], \"schema_version\": 1, \"ticket_id\": \"OK1\", \"category_valid\": true, \"route\": \"物流客服\", \"suggested_route\": \"物流客服\", \"action\": \"suggest_only\", \"validation\": {}, \"semantic_review\": {}, \"qc_status\": \"pass\"}"
+        },
+        {
+          "ticket_id": "BR2",
+          "qc_status": "undetermined",
+          "needs_review": true,
+          "category": "",
+          "category_valid": false,
+          "revalidation_ok": false,
+          "result_json": "{\"category_confidence\": 0.95, \"category_evidence\": [{\"message_index\": 0, \"quote\": \"我的包裹三天没更新了。\"}], \"summary\": \"客户反馈包裹物流三天未更新，客服表示将联系物流核实。\", \"needs_review\": false, \"review_reasons\": [], \"ticket_id\": \"BR2\"}"
+        },
+        {
+          "ticket_id": "NC3",
+          "qc_status": "undetermined",
+          "needs_review": true,
+          "category": "",
+          "category_valid": false,
+          "revalidation_ok": false,
+          "result_json": "{\"category\": \"物流配送\", \"category_confidence\": 0.95, \"category_evidence\": [{\"message_index\": 0, \"quote\": \"这句话根本不在客户消息里\"}], \"summary\": \"客户反馈包裹物流三天未更新，客服表示将联系物流核实。\", \"checks\": {\"R01\": {\"rule_id\": \"R01\", \"status\": \"pass\", \"rule_quote\": \"客服不得辱骂、嘲讽或贬低客户。\", \"reason\": \"客服礼貌，无辱骂行为\", \"evidence\": [{\"message_index\": 1, \"quote\": \"您好，我帮您联系物流核实。\"}]}, \"R02\": {\"rule_id\": \"R02\", \"status\": \"pass\", \"rule_quote\": \"客服不得索取客户的账户密码、支付密码或支付验证码。\", \"reason\": \"未索取任何密码\", \"evidence\": [{\"message_index\": 1, \"quote\": \"您好，我帮您联系物流核实。\"}]}, \"R03\": {\"rule_id\": \"R03\", \"status\": \"pass\", \"rule_quote\": \"退款须经售后审核；审核通过后预计1至3个工作日原路退回，客服不得保证具体到账时点。\", \"reason\": \"未涉及退款到账承诺\", \"evidence\": [{\"message_index\": 1, \"quote\": \"您好，我帮您联系物流核实。\"}]}}, \"needs_review\": false, \"review_reasons\": [], \"schema_version\": 1, \"ticket_id\": \"NC3\", \"category_valid\": true, \"route\": \"物流客服\", \"suggested_route\": \"物流客服\", \"action\": \"suggest_only\", \"validation\": {}, \"semantic_review\": {}, \"qc_status\": \"pass\"}"
+        }
+      ]
+    }
+  }
+]

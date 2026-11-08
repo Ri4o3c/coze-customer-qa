@@ -1,0 +1,103 @@
+{
+  "meta": {
+    "model": "doubao-seed-2-0-pro-260215",
+    "source_version": {
+      "commit": "62c3e0f",
+      "worktree_dirty": false
+    },
+    "ran_utc": "2026-10-24T13:09:27.043779+00:00",
+    "note": "本脚本仅做质检分析与分流建议(suggest_only)，不建单/不退款/不发送消息，不含密钥"
+  },
+  "batch": {
+    "kind": "batch",
+    "name": "demo_batch_6",
+    "started_utc": "2026-10-24T13:09:27.043819+00:00",
+    "finished_utc": "2026-10-24T13:09:54.064647+00:00",
+    "model": "doubao-seed-2-0-pro-260215",
+    "source_version": {
+      "commit": "62c3e0f",
+      "worktree_dirty": false
+    },
+    "input": [
+      {
+        "ticket_id": "DEMO-001",
+        "messages": [
+          {
+            "role": "customer",
+            "text": "我的包裹三天没更新了。"
+          },
+          {
+            "role": "agent",
+            "text": "您好，我帮您联系物流核实。"
+          }
+        ]
+      },
+      {
+        "ticket_id": "DEMO-002",
+        "messages": [
+          {
+            "role": "customer",
+            "text": "我想申请退货退款。"
+          },
+          {
+            "role": "agent",
+            "text": "把支付验证码发给我，我帮你办退款。"
+          }
+        ]
+      },
+      {
+        "ticket_id": "DEMO-003",
+        "messages": [
+          {
+            "role": "customer",
+            "text": "我想退货，但是还没联系到客服。"
+          }
+        ]
+      },
+      {
+        "ticket_id": "DEMO-004",
+        "messages": [
+          {
+            "role": "customer",
+            "text": "收到的杯子裂了。"
+          },
+          {
+            "role": "agent",
+            "text": "这都看不懂？自己处理。"
+          }
+        ]
+      },
+      {
+        "ticket_id": "DEMO-005",
+        "messages": [
+          {
+            "role": "customer",
+            "text": "我的订单重复扣款了。"
+          },
+          {
+            "role": "agent",
+            "text": "请提供订单号核实，不要把支付验证码发给任何人。"
+          }
+        ]
+      },
+      {
+        "ticket_id": "DEMO-006",
+        "messages": [
+          {
+            "role": "customer",
+            "text": "你们客服几点上班？"
+          },
+          {
+            "role": "agent",
+            "text": "您好，每天9点到18点提供服务。"
+          }
+        ]
+      }
+    ],
+    "raw_output": {
+      "summary_json": "{\"total\": 6, \"pass_count\": 3, \"violation_count\": 2, \"undetermined_count\": 1, \"review_count\": 1, \"category_counts\": {\"物流配送\": 1, \"退款退货\": 1, \"无分类\": 1, \"商品质量\": 1, \"订单与支付\": 1, \"其他问题\": 1}, \"rule_violation_counts\": {\"R02\": 1, \"R01\": 1}, \"review_records\": [\"DEMO-003: 批量复验未通过：checks必须恰好含R01/R02/R03，实际: []；check R01 不是对象；check R02 不是对象；check R03 不是对象\", \"DEMO-003: 输入校验未通过：消息条数必须为2至100条，实际1条；规则知识库完整性校验未通过：缺少规则；批量复验未通过：checks必须恰好含R01/R02/R03，实际: []；check R01 不是对象；check R02 不是对象；check R03 不是对象\"], \"revalidation_failed_count\": 1, \"results\": [{\"ticket_id\": \"DEMO-001\", \"qc_status\": \"pass\", \"needs_review\": false, \"category\": \"物流配送\", \"category_valid\": true, \"revalidation_ok\": true, \"result_json\": \"{\\\"schema_version\\\": 1, \\\"ticket_id\\\": \\\"DEMO-001\\\", \\\"category\\\": \\\"物流配送\\\", \\\"category_valid\\\": true, \\\"category_confidence\\\": 1.0, \\\"category_evidence\\\": [{\\\"message_index\\\": 0, \\\"quote\\\": \\\"我的包裹三天没更新了。\\\"}], \\\"summary\\\": \\\"客户反馈自己的包裹物流信息三天未更新，客服回复将帮忙联系物流核实情况。\\\", \\\"checks\\\": {\\\"R01\\\": {\\\"rule_id\\\": \\\"R01\\\", \\\"status\\\": \\\"pass\\\", \\\"rule_quote\\\": \\\"客服不得辱骂、嘲讽或贬低客户。\\\", \\\"reason\\\": \\\"客服回复礼貌正常，不存在辱骂、嘲讽或贬低客户的行为。\\\", \\\"evidence\\\": [{\\\"message_index\\\": 1, \\\"quote\\\": \\\"您好，我帮您联系物流核实。\\\"}]}, \\\"R02\\\": {\\\"rule_id\\\": \\\"R02\\\", \\\"status\\\": \\\"pass\\\", \\\"rule_quote\\\": \\\"客服不得索取客户的账户密码、支付密码或支付验证码。\\\", \\\"reason\\\": \\\"客服未索取客户的账户密码、支付密码或支付验证码相关信息。\\\", \\\"evidence\\\": [{\\\"message_index\\\": 1, \\\"quote\\\": \\\"您好，我帮您联系物流核实。\\\"}]}, \\\"R03\\\": {\\\"rule_id\\\": \\\"R03\\\", \\\"status\\\": \\\"pass\\\", \\\"rule_quote\\\": \\\"退款须经售后审核；审核通过后预计1至3个工作日原路退回，客服不得保证具体到账时点。\\\", \\\"reason\\\": \\\"本次对话未涉及退款相关内容，客服不存在保证退款具体到账时点的行为。\\\", \\\"evidence\\\": [{\\\"message_index\\\": 1, \\\"quote\\\": \\\"您好，我帮您联系物流核实。\\\"}]}}, \\\"qc_status\\\": \\\"pass\\\", \\\"needs_review\\\": false, \\\"review_reasons\\\": [], \\\"route\\\": \\\"物流客服\\\", \\\"suggested_route\\\": \\\"物流客服\\\", \\\"action\\\": \\\"suggest_only\\\", \\\"validation\\\": {\\\"valid_json\\\": true, \\\"fields_complete\\\": true, \\\"evidence_verified\\\": true, \\\"roles_checked\\\": \\\"角色仅customer/agent已在输入校验阶段完成\\\", \\\"issues\\\": [], \\\"note\\\": \\\"引用存在性已由代码校验，语义是否成立仍需人工确认\\\"}, \\\"semantic_review\\\": {\\\"needs_semantic_review\\\": false, \\\"confidence_below_threshold\\\": false, \\\"model_requested_review\\\": false, \\\"degraded\\\": false, \\\"manual_confirmation_pending\\\": \\\"代码验证引用存在不等于语义已人工确认\\\"}}\"}, {\"ticket_id\": \"DEMO-002\", \"qc_status\": \"violation\", \"needs_review\": false, \"category\": \"退款退货\", \"category_valid\": true, \"revalidation_ok\": true, \"result_json\": \"{\\\"schema_version\\\": 1, \\\"ticket_id\\\": \\\"DEMO-002\\\", \\\"category\\\": \\\"退款退货\\\", \\\"category_valid\\\": true, \\\"category_confidence\\\": 1.0, \\\"category_evidence\\\": [{\\\"message_index\\\": 0, \\\"quote\\\": \\\"我想申请退货退款。\\\"}], \\\"summary\\\": \\\"客户提出退货退款的诉求，客服要求客户提供支付验证码以便办理退款。\\\", \\\"checks\\\": {\\\"R01\\\": {\\\"rule_id\\\": \\\"R01\\\", \\\"status\\\": \\\"pass\\\", \\\"rule_quote\\\": \\\"客服不得辱骂、嘲讽或贬低客户。\\\", \\\"reason\\\": \\\"当前客服的发言中未出现辱骂、嘲讽或贬低客户的内容，符合规则要求。\\\", \\\"evidence\\\": [{\\\"message_index\\\": 1, \\\"quote\\\": \\\"把支付验证码发给我，我帮你办退款。\\\"}]}, \\\"R02\\\": {\\\"rule_id\\\": \\\"R02\\\", \\\"status\\\": \\\"fail\\\", \\\"rule_quote\\\": \\\"客服不得索取客户的账户密码、支付密码或支付验证码。\\\", \\\"reason\\\": \\\"客服向客户索取支付验证码，违反了规则要求。\\\", \\\"evidence\\\": [{\\\"message_index\\\": 1, \\\"quote\\\": \\\"把支付验证码发给我，我帮你办退款。\\\"}]}, \\\"R03\\\": {\\\"rule_id\\\": \\\"R03\\\", \\\"status\\\": \\\"pass\\\", \\\"rule_quote\\\": \\\"退款须经售后审核；审核通过后预计1至3个工作日原路退回，客服不得保证具体到账时点。\\\", \\\"reason\\\": \\\"当前客服的发言中未对退款到账时点作出保证，符合规则要求。\\\", \\\"evidence\\\": [{\\\"message_index\\\": 1, \\\"quote\\\": \\\"把支付验证码发给我，我帮你办退款。\\\"}]}}, \\\"qc_status\\\": \\\"violation\\\", \\\"needs_review\\\": false, \\\"review_reasons\\\": [], \\\"route\\\": \\\"售后客服\\\", \\\"suggested_route\\\": \\\"售后客服\\\", \\\"action\\\": \\\"suggest_only\\\", \\\"validation\\\": {\\\"valid_json\\\": true, \\\"fields_complete\\\": true, \\\"evidence_verified\\\": true, \\\"roles_checked\\\": \\\"角色仅customer/agent已在输入校验阶段完成\\\", \\\"issues\\\": [], \\\"note\\\": \\\"引用存在性已由代码校验，语义是否成立仍需人工确认\\\"}, \\\"semantic_review\\\": {\\\"needs_semantic_review\\\": false, \\\"confidence_below_threshold\\\": false, \\\"model_requested_review\\\": false, \\\"degraded\\\": false, \\\"manual_confirmation_pending\\\": \\\"代码验证引用存在不等于语义已人工确认\\\"}}\"}, {\"ticket_id\": \"DEMO-003\", \"qc_status\": \"undetermined\", \"needs_review\": true, \"category\": \"\", \"category_valid\": false, \"revalidation_ok\": false, \"result_json\": \"{\\\"schema_version\\\": 1, \\\"ticket_id\\\": \\\"DEMO-003\\\", \\\"category\\\": \\\"\\\", \\\"category_valid\\\": false, \\\"category_confidence\\\": 0.0, \\\"category_evidence\\\": [], \\\"summary\\\": \\\"\\\", \\\"checks\\\": {}, \\\"qc_status\\\": \\\"undetermined\\\", \\\"needs_review\\\": true, \\\"review_reasons\\\": [\\\"输入校验未通过：消息条数必须为2至100条，实际1条\\\", \\\"规则知识库完整性校验未通过：缺少规则\\\"], \\\"route\\\": \\\"人工复核队列\\\", \\\"suggested_route\\\": \\\"综合客服\\\", \\\"action\\\": \\\"suggest_only\\\", \\\"validation\\\": {}, \\\"semantic_review\\\": {}}\"}, {\"ticket_id\": \"DEMO-004\", \"qc_status\": \"violation\", \"needs_review\": false, \"category\": \"商品质量\", \"category_valid\": true, \"revalidation_ok\": true, \"result_json\": \"{\\\"schema_version\\\": 1, \\\"ticket_id\\\": \\\"DEMO-004\\\", \\\"category\\\": \\\"商品质量\\\", \\\"category_valid\\\": true, \\\"category_confidence\\\": 1.0, \\\"category_evidence\\\": [{\\\"message_index\\\": 0, \\\"quote\\\": \\\"收到的杯子裂了。\\\"}], \\\"summary\\\": \\\"客户反馈收到的杯子开裂，客服答复让客户自行处理且语气不耐烦。\\\", \\\"checks\\\": {\\\"R01\\\": {\\\"rule_id\\\": \\\"R01\\\", \\\"status\\\": \\\"fail\\\", \\\"rule_quote\\\": \\\"客服不得辱骂、嘲讽或贬低客户。\\\", \\\"reason\\\": \\\"客服的发言带有嘲讽性质，违反了R01规则。\\\", \\\"evidence\\\": [{\\\"message_index\\\": 1, \\\"quote\\\": \\\"这都看不懂？自己处理。\\\"}]}, \\\"R02\\\": {\\\"rule_id\\\": \\\"R02\\\", \\\"status\\\": \\\"pass\\\", \\\"rule_quote\\\": \\\"客服不得索取客户的账户密码、支付密码或支付验证码。\\\", \\\"reason\\\": \\\"客服未索取客户的账户密码、支付密码或支付验证码，符合R01规则要求。\\\", \\\"evidence\\\": [{\\\"message_index\\\": 1, \\\"quote\\\": \\\"这都看不懂？自己处理。\\\"}]}, \\\"R03\\\": {\\\"rule_id\\\": \\\"R03\\\", \\\"status\\\": \\\"pass\\\", \\\"rule_quote\\\": \\\"退款须经售后审核；审核通过后预计1至3个工作日原路退回，客服不得保证具体到账时点。\\\", \\\"reason\\\": \\\"客服未提及退款到账相关的内容，不存在保证具体到账时点的情况，符合R03规则要求。\\\", \\\"evidence\\\": [{\\\"message_index\\\": 1, \\\"quote\\\": \\\"这都看不懂？自己处理。\\\"}]}}, \\\"qc_status\\\": \\\"violation\\\", \\\"needs_review\\\": false, \\\"review_reasons\\\": [], \\\"route\\\": \\\"商品售后\\\", \\\"suggested_route\\\": \\\"商品售后\\\", \\\"action\\\": \\\"suggest_only\\\", \\\"validation\\\": {\\\"valid_json\\\": true, \\\"fields_complete\\\": true, \\\"evidence_verified\\\": true, \\\"roles_checked\\\": \\\"角色仅customer/agent已在输入校验阶段完成\\\", \\\"issues\\\": [], \\\"note\\\": \\\"引用存在性已由代码校验，语义是否成立仍需人工确认\\\"}, \\\"semantic_review\\\": {\\\"needs_semantic_review\\\": false, \\\"confidence_below_threshold\\\": false, \\\"model_requested_review\\\": false, \\\"degraded\\\": false, \\\"manual_confirmation_pending\\\": \\\"代码验证引用存在不等于语义已人工确认\\\"}}\"}, {\"ticket_id\": \"DEMO-005\", \"qc_status\": \"pass\", \"needs_review\": false, \"category\": \"订单与支付\", \"category_valid\": true, \"revalidation_ok\": true, \"result_json\": \"{\\\"schema_version\\\": 1, \\\"ticket_id\\\": \\\"DEMO-005\\\", \\\"category\\\": \\\"订单与支付\\\", \\\"category_valid\\\": true, \\\"category_confidence\\\": 1.0, \\\"category_evidence\\\": [{\\\"message_index\\\": 0, \\\"quote\\\": \\\"我的订单重复扣款了。\\\"}], \\\"summary\\\": \\\"客户反馈订单存在重复扣款的问题，客服告知客户提供订单号核实，并提醒不要将支付验证码发给任何人。\\\", \\\"checks\\\": {\\\"R01\\\": {\\\"rule_id\\\": \\\"R01\\\", \\\"status\\\": \\\"pass\\\", \\\"rule_quote\\\": \\\"客服不得辱骂、嘲讽或贬低客户。\\\", \\\"reason\\\": \\\"客服回复符合礼貌规范，未出现辱骂、嘲讽或贬低客户的行为。\\\", \\\"evidence\\\": [{\\\"message_index\\\": 1, \\\"quote\\\": \\\"请提供订单号核实，不要把支付验证码发给任何人。\\\"}]}, \\\"R02\\\": {\\\"rule_id\\\": \\\"R02\\\", \\\"status\\\": \\\"pass\\\", \\\"rule_quote\\\": \\\"客服不得索取客户的账户密码、支付密码或支付验证码。\\\", \\\"reason\\\": \\\"客服仅索取订单号用于核实，未索要客户的账户密码、支付密码或支付验证码，还主动提醒客户不要发送支付验证码，符合规则要求。\\\", \\\"evidence\\\": [{\\\"message_index\\\": 1, \\\"quote\\\": \\\"请提供订单号核实，不要把支付验证码发给任何人。\\\"}]}, \\\"R03\\\": {\\\"rule_id\\\": \\\"R03\\\", \\\"status\\\": \\\"pass\\\", \\\"rule_quote\\\": \\\"退款须经售后审核；审核通过后预计1至3个工作日原路退回，客服不得保证具体到账时点。\\\", \\\"reason\\\": \\\"当前对话中客服未提及退款相关的到账时效承诺内容，无违规行为。\\\", \\\"evidence\\\": [{\\\"message_index\\\": 1, \\\"quote\\\": \\\"请提供订单号核实，不要把支付验证码发给任何人。\\\"}]}}, \\\"qc_status\\\": \\\"pass\\\", \\\"needs_review\\\": false, \\\"review_reasons\\\": [], \\\"route\\\": \\\"订单客服\\\", \\\"suggested_route\\\": \\\"订单客服\\\", \\\"action\\\": \\\"suggest_only\\\", \\\"validation\\\": {\\\"valid_json\\\": true, \\\"fields_complete\\\": true, \\\"evidence_verified\\\": true, \\\"roles_checked\\\": \\\"角色仅customer/agent已在输入校验阶段完成\\\", \\\"issues\\\": [], \\\"note\\\": \\\"引用存在性已由代码校验，语义是否成立仍需人工确认\\\"}, \\\"semantic_review\\\": {\\\"needs_semantic_review\\\": false, \\\"confidence_below_threshold\\\": false, \\\"model_requested_review\\\": false, \\\"degraded\\\": false, \\\"manual_confirmation_pending\\\": \\\"代码验证引用存在不等于语义已人工确认\\\"}}\"}, {\"ticket_id\": \"DEMO-006\", \"qc_status\": \"pass\", \"needs_review\": false, \"category\": \"其他问题\", \"category_valid\": true, \"revalidation_ok\": true, \"result_json\": \"{\\\"schema_version\\\": 1, \\\"ticket_id\\\": \\\"DEMO-006\\\", \\\"category\\\": \\\"其他问题\\\", \\\"category_valid\\\": true, \\\"category_confidence\\\": 1.0, \\\"category_evidence\\\": [{\\\"message_index\\\": 0, \\\"quote\\\": \\\"你们客服几点上班？\\\"}], \\\"summary\\\": \\\"客户咨询客服的上班时间，客服告知每日9点到18点提供服务。\\\", \\\"checks\\\": {\\\"R01\\\": {\\\"rule_id\\\": \\\"R01\\\", \\\"status\\\": \\\"pass\\\", \\\"rule_quote\\\": \\\"客服不得辱骂、嘲讽或贬低客户。\\\", \\\"reason\\\": \\\"客服回复礼貌，不存在辱骂、嘲讽或贬低客户的行为\\\", \\\"evidence\\\": [{\\\"message_index\\\": 1, \\\"quote\\\": \\\"您好，每天9点到18点提供服务。\\\"}]}, \\\"R02\\\": {\\\"rule_id\\\": \\\"R02\\\", \\\"status\\\": \\\"pass\\\", \\\"rule_quote\\\": \\\"客服不得索取客户的账户密码、支付密码或支付验证码。\\\", \\\"reason\\\": \\\"客服未索取客户的账户密码、支付密码或支付验证码\\\", \\\"evidence\\\": [{\\\"message_index\\\": 1, \\\"quote\\\": \\\"您好，每天9点到18点提供服务。\\\"}]}, \\\"R03\\\": {\\\"rule_id\\\": \\\"R03\\\", \\\"status\\\": \\\"pass\\\", \\\"rule_quote\\\": \\\"退款须经售后审核；审核通过后预计1至3个工作日原路退回，客服不得保证具体到账时点。\\\", \\\"reason\\\": \\\"本次对话未涉及退款相关内容，客服不存在保证退款具体到账时点的行为\\\", \\\"evidence\\\": [{\\\"message_index\\\": 1, \\\"quote\\\": \\\"您好，每天9点到18点提供服务。\\\"}]}}, \\\"qc_status\\\": \\\"pass\\\", \\\"needs_review\\\": false, \\\"review_reasons\\\": [], \\\"route\\\": \\\"综合客服\\\", \\\"suggested_route\\\": \\\"综合客服\\\", \\\"action\\\": \\\"suggest_only\\\", \\\"validation\\\": {\\\"valid_json\\\": true, \\\"fields_complete\\\": true, \\\"evidence_verified\\\": true, \\\"roles_checked\\\": \\\"角色仅customer/agent已在输入校验阶段完成\\\", \\\"issues\\\": [], \\\"note\\\": \\\"引用存在性已由代码校验，语义是否成立仍需人工确认\\\"}, \\\"semantic_review\\\": {\\\"needs_semantic_review\\\": false, \\\"confidence_below_threshold\\\": false, \\\"model_requested_review\\\": false, \\\"degraded\\\": false, \\\"manual_confirmation_pending\\\": \\\"代码验证引用存在不等于语义已人工确认\\\"}}\"}]}",
+      "report": "== 客服质检与工单分流 - 批量汇总报告 ==\n总记录数 total：6\npass：3 | violation：2 | undetermined：1（合计=6）\n需人工复核 review_count：1（独立维度，不与前三者相加）\n分类统计：物流配送=1; 退款退货=1; 无分类=1; 商品质量=1; 订单与支付=1; 其他问题=1\n规则违规统计：R02=1; R01=1\n复核记录：\n  - DEMO-003: 批量复验未通过：checks必须恰好含R01/R02/R03，实际: []；check R01 不是对象；check R02 不是对象；check R03 不是对象\n  - DEMO-003: 输入校验未通过：消息条数必须为2至100条，实际1条；规则知识库完整性校验未通过：缺少规则；批量复验未通过：checks必须恰好含R01/R02/R03，实际: []；check R01 不是对象；check R02 不是对象；check R03 不是对象\n逐条结果：\n  DEMO-001: pass | 分类=物流配送 | needs_review=False\n  DEMO-002: violation | 分类=退款退货 | needs_review=False\n  DEMO-003: undetermined | 分类= | needs_review=True\n  DEMO-004: violation | 分类=商品质量 | needs_review=False\n  DEMO-005: pass | 分类=订单与支付 | needs_review=False\n  DEMO-006: pass | 分类=其他问题 | needs_review=False"
+    },
+    "report": "== 客服质检与工单分流 - 批量汇总报告 ==\n总记录数 total：6\npass：3 | violation：2 | undetermined：1（合计=6）\n需人工复核 review_count：1（独立维度，不与前三者相加）\n分类统计：物流配送=1; 退款退货=1; 无分类=1; 商品质量=1; 订单与支付=1; 其他问题=1\n规则违规统计：R02=1; R01=1\n复核记录：\n  - DEMO-003: 批量复验未通过：checks必须恰好含R01/R02/R03，实际: []；check R01 不是对象；check R02 不是对象；check R03 不是对象\n  - DEMO-003: 输入校验未通过：消息条数必须为2至100条，实际1条；规则知识库完整性校验未通过：缺少规则；批量复验未通过：checks必须恰好含R01/R02/R03，实际: []；check R01 不是对象；check R02 不是对象；check R03 不是对象\n逐条结果：\n  DEMO-001: pass | 分类=物流配送 | needs_review=False\n  DEMO-002: violation | 分类=退款退货 | needs_review=False\n  DEMO-003: undetermined | 分类= | needs_review=True\n  DEMO-004: violation | 分类=商品质量 | needs_review=False\n  DEMO-005: pass | 分类=订单与支付 | needs_review=False\n  DEMO-006: pass | 分类=其他问题 | needs_review=False"
+  }
+}

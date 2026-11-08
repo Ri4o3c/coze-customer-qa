@@ -1,0 +1,11 @@
+请按系统规则审查下列数据。
+
+<record>
+{{prepared_json}}
+</record>
+
+<retrieved_rules>
+{{rules_json}}
+</retrieved_rules>
+
+只输出一个严格JSON对象。

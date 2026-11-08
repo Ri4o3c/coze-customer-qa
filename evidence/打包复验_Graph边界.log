@@ -1,0 +1,38 @@
+C:\Users\12926\Documents\Codex\2026-10-31\da\work\coze-package-check\Lib\site-packages\langgraph\checkpoint\base\__init__.py:17: LangChainPendingDeprecationWarning: The default value of `allowed_objects` will change in a future version. Pass an explicit value (e.g., allowed_objects='messages' or allowed_objects='core') to suppress this warning.
+  from langgraph.checkpoint.serde.jsonplus import JsonPlusSerializer
+[hardening] total=34 passed=34
+  PASS  rule_quote_verbatim_pass
+  PASS  rule_quote_short_substring
+  PASS  rule_quote_punct_diff
+  PASS  unknown_but_model_needs_review_false
+  PASS  unknown_with_fail_still_review
+  PASS  all_unknown_model_false
+  PASS  category_evidence_empty_review
+  PASS  hard_category_empty_list
+  PASS  hard_category_empty_dict
+  PASS  hard_rule_id_dict
+  PASS  hard_extra_check_key
+  PASS  hard_missing_rule_quote
+  PASS  hard_missing_reason
+  PASS  hard_missing_check_evidence
+  PASS  hard_illegal_category
+  PASS  hard_nan_confidence
+  PASS  cat_evidence_not_customer
+  PASS  check_evidence_not_agent
+  PASS  invalid_json_text
+  PASS  valid_input_ok
+  PASS  val_ticket_id_empty_list
+  PASS  val_ticket_id_empty
+  PASS  val_only_one_role
+  PASS  val_illegal_role
+  PASS  val_over_char_limit
+  PASS  rules_complete_ok
+  PASS  rules_missing_r03
+  PASS  rules_same_id_conflict
+  PASS  batch_parse_ok
+  PASS  batch_parse_dup
+  PASS  batch_parse_missing_id
+  PASS  batch_parse_empty
+  PASS  batch_parse_over50
+  PASS  batch_aggregate_revalidation
+[hardening] saved => C:\Users\12926\Documents\Codex\2026-10-31\da\work\resume-packages-20261102\02_Coze_客服质检与工单分流\public-demo-source\verification\hardening_result.json

@@ -1,0 +1,91 @@
+{
+  "source": "Coze当前画布独立试运行",
+  "project_url": "https://code.coze.cn/p/7700153860433969202",
+  "source_commit": "62c3e0f",
+  "input": {
+    "ticket_id": "FINAL-UI-R02",
+    "messages": [
+      {
+        "role": "customer",
+        "text": "我想申请退货退款。"
+      },
+      {
+        "role": "agent",
+        "text": "把支付验证码发给我，我帮你办退款。"
+      }
+    ]
+  },
+  "result": {
+    "schema_version": 1,
+    "ticket_id": "FINAL-UI-R02",
+    "category": "退款退货",
+    "category_valid": true,
+    "category_confidence": 1,
+    "category_evidence": [
+      {
+        "message_index": 0,
+        "quote": "我想申请退货退款。"
+      }
+    ],
+    "summary": "客户提出退货退款的诉求，客服回复要求客户发送支付验证码以便办理退款。",
+    "checks": {
+      "R01": {
+        "rule_id": "R01",
+        "status": "pass",
+        "rule_quote": "客服不得辱骂、嘲讽或贬低客户。",
+        "reason": "客服的发言中不存在辱骂、嘲讽或贬低客户的内容，符合规则要求。",
+        "evidence": [
+          {
+            "message_index": 1,
+            "quote": "把支付验证码发给我，我帮你办退款。"
+          }
+        ]
+      },
+      "R02": {
+        "rule_id": "R02",
+        "status": "fail",
+        "rule_quote": "客服不得索取客户的账户密码、支付密码或支付验证码。",
+        "reason": "客服向客户索取支付验证码，违反了该规则的要求。",
+        "evidence": [
+          {
+            "message_index": 1,
+            "quote": "把支付验证码发给我，我帮你办退款。"
+          }
+        ]
+      },
+      "R03": {
+        "rule_id": "R03",
+        "status": "pass",
+        "rule_quote": "退款须经售后审核；审核通过后预计1至3个工作日原路退回，客服不得保证具体到账时点。",
+        "reason": "客服的发言中未涉及保证退款具体到账时点的内容，符合规则要求。",
+        "evidence": [
+          {
+            "message_index": 1,
+            "quote": "把支付验证码发给我，我帮你办退款。"
+          }
+        ]
+      }
+    },
+    "qc_status": "violation",
+    "needs_review": false,
+    "review_reasons": [],
+    "route": "售后客服",
+    "suggested_route": "售后客服",
+    "action": "suggest_only",
+    "validation": {
+      "valid_json": true,
+      "fields_complete": true,
+      "evidence_verified": true,
+      "roles_checked": "角色仅customer/agent已在输入校验阶段完成",
+      "issues": [],
+      "note": "引用存在性已由代码校验，语义是否成立仍需人工确认"
+    },
+    "semantic_review": {
+      "needs_semantic_review": false,
+      "confidence_below_threshold": false,
+      "model_requested_review": false,
+      "degraded": false,
+      "manual_confirmation_pending": "代码验证引用存在不等于语义已人工确认"
+    }
+  }
+}

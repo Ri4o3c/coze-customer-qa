@@ -1,0 +1,76 @@
+[
+  {
+    "ticket_id": "DEMO-001",
+    "messages": [
+      {
+        "role": "customer",
+        "text": "我的包裹三天没更新了。"
+      },
+      {
+        "role": "agent",
+        "text": "您好，我帮您联系物流核实。"
+      }
+    ]
+  },
+  {
+    "ticket_id": "DEMO-002",
+    "messages": [
+      {
+        "role": "customer",
+        "text": "我想申请退货退款。"
+      },
+      {
+        "role": "agent",
+        "text": "把支付验证码发给我，我帮你办退款。"
+      }
+    ]
+  },
+  {
+    "ticket_id": "DEMO-003",
+    "messages": [
+      {
+        "role": "customer",
+        "text": "我想退货，但是还没联系到客服。"
+      }
+    ]
+  },
+  {
+    "ticket_id": "DEMO-004",
+    "messages": [
+      {
+        "role": "customer",
+        "text": "收到的杯子裂了。"
+      },
+      {
+        "role": "agent",
+        "text": "这都看不懂？自己处理。"
+      }
+    ]
+  },
+  {
+    "ticket_id": "DEMO-005",
+    "messages": [
+      {
+        "role": "customer",
+        "text": "我的订单重复扣款了。"
+      },
+      {
+        "role": "agent",
+        "text": "请提供订单号核实，不要把支付验证码发给任何人。"
+      }
+    ]
+  },
+  {
+    "ticket_id": "DEMO-006",
+    "messages": [
+      {
+        "role": "customer",
+        "text": "你们客服几点上班？"
+      },
+      {
+        "role": "agent",
+        "text": "您好，每天9点到18点提供服务。"
+      }
+    ]
+  }
+]

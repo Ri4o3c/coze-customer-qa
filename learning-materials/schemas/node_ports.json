@@ -1,0 +1,78 @@
+{
+  "kind": "configuration_reference_not_import_dsl",
+  "nodes": {
+    "01_prepare": {
+      "inputs": {
+        "record_json": "String"
+      },
+      "outputs": {
+        "valid": "Boolean",
+        "prepared_json": "String",
+        "ticket_id": "String",
+        "query": "String"
+      }
+    },
+    "02_rules": {
+      "inputs": {
+        "hits": "Array<Object{content:String}>"
+      },
+      "outputs": {
+        "rules_json": "String",
+        "rules_ok": "Boolean",
+        "errors": "Array<String>"
+      }
+    },
+    "03_validate": {
+      "inputs": {
+        "prepared_json": "String",
+        "rules_json": "String",
+        "analysis_json": "String"
+      },
+      "outputs": {
+        "result_json": "String",
+        "needs_review": "Boolean"
+      }
+    },
+    "04_fallback": {
+      "inputs": {
+        "prepared_json": "String",
+        "failure_code": "String"
+      },
+      "outputs": {
+        "result_json": "String",
+        "needs_review": "Boolean"
+      }
+    },
+    "05_render": {
+      "inputs": {
+        "result_json": "String"
+      },
+      "outputs": {
+        "result_json": "String",
+        "report": "String",
+        "needs_review": "Boolean"
+      }
+    },
+    "06_batch_prepare": {
+      "inputs": {
+        "records_json": "String"
+      },
+      "outputs": {
+        "valid": "Boolean",
+        "items": "Array<Object{source_index:Integer,ticket_id:String,record_json:String}>",
+        "summary_json": "String",
+        "report": "String"
+      }
+    },
+    "07_batch_summary": {
+      "inputs": {
+        "items": "Array<Object>",
+        "results": "Array<String>"
+      },
+      "outputs": {
+        "summary_json": "String",
+        "report": "String"
+      }
+    }
+  }
+}

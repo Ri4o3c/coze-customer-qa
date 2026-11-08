@@ -1,0 +1,49 @@
+test_batch_evidence_must_still_be_original_agent_words (test_nodes.BatchTests.test_batch_evidence_must_still_be_original_agent_words) ... ok
+test_batch_limit_is_enforced (test_nodes.BatchTests.test_batch_limit_is_enforced) ... ok
+test_duplicate_result_is_not_double_counted (test_nodes.BatchTests.test_duplicate_result_is_not_double_counted) ... ok
+test_duplicate_ticket_ids_reject_entire_batch (test_nodes.BatchTests.test_duplicate_ticket_ids_reject_entire_batch) ... ok
+test_invalid_conversation_is_kept_for_single_review (test_nodes.BatchTests.test_invalid_conversation_is_kept_for_single_review) ... ok
+test_invalid_rule_id_does_not_crash_sort (test_nodes.BatchTests.test_invalid_rule_id_does_not_crash_sort) ... ok
+test_malformed_subflow_types_do_not_abort_batch (test_nodes.BatchTests.test_malformed_subflow_types_do_not_abort_batch) ... ok
+test_missing_nested_contract_routes_review (test_nodes.BatchTests.test_missing_nested_contract_routes_review) ... ok
+test_missing_result_is_review_record_not_lost (test_nodes.BatchTests.test_missing_result_is_review_record_not_lost) ... ok
+test_non_object_fourth_check_routes_review (test_nodes.BatchTests.test_non_object_fourth_check_routes_review) ... ok
+test_out_of_order_results_link_by_id (test_nodes.BatchTests.test_out_of_order_results_link_by_id) ... ok
+test_route_must_match_category (test_nodes.BatchTests.test_route_must_match_category) ... ok
+test_untrusted_result_cannot_count_as_pass (test_nodes.BatchTests.test_untrusted_result_cannot_count_as_pass) ... ok
+test_fallback_is_explicit_review (test_nodes.OutputTests.test_fallback_is_explicit_review) ... ok
+test_report_shows_quote_and_route (test_nodes.OutputTests.test_report_shows_quote_and_route) ... ok
+test_invalid_json_routes_review (test_nodes.PrepareTests.test_invalid_json_routes_review) ... ok
+test_long_input_is_not_silently_truncated (test_nodes.PrepareTests.test_long_input_is_not_silently_truncated) ... ok
+test_only_customer_routes_review (test_nodes.PrepareTests.test_only_customer_routes_review) ... ok
+test_role_is_not_inferred (test_nodes.PrepareTests.test_role_is_not_inferred) ... ok
+test_valid_input (test_nodes.PrepareTests.test_valid_input) ... ok
+test_all_rules_are_loaded (test_nodes.RulesTests.test_all_rules_are_loaded) ... ok
+test_conflicting_rule_is_rejected (test_nodes.RulesTests.test_conflicting_rule_is_rejected) ... ok
+test_metadata_is_not_treated_as_retrieved_policy (test_nodes.RulesTests.test_metadata_is_not_treated_as_retrieved_policy) ... ok
+test_missing_rule_is_not_filled_from_memory (test_nodes.RulesTests.test_missing_rule_is_not_filled_from_memory) ... ok
+test_boolean_index_is_not_integer_index (test_nodes.ValidateTests.test_boolean_index_is_not_integer_index) ... ok
+test_customer_words_are_not_agent_evidence (test_nodes.ValidateTests.test_customer_words_are_not_agent_evidence) ... ok
+test_duplicate_rule_checks_rejected (test_nodes.ValidateTests.test_duplicate_rule_checks_rejected) ... ok
+test_fabricated_quote_cannot_pass (test_nodes.ValidateTests.test_fabricated_quote_cannot_pass) ... ok
+test_low_confidence_routes_review (test_nodes.ValidateTests.test_low_confidence_routes_review) ... ok
+test_missing_rule_routes_review (test_nodes.ValidateTests.test_missing_rule_routes_review) ... ok
+test_model_cannot_assign_ticket_identity (test_nodes.ValidateTests.test_model_cannot_assign_ticket_identity) ... ok
+test_model_output_json_failure (test_nodes.ValidateTests.test_model_output_json_failure) ... ok
+test_nan_confidence_rejected (test_nodes.ValidateTests.test_nan_confidence_rejected) ... ok
+test_non_string_category_routes_review_without_crash (test_nodes.ValidateTests.test_non_string_category_routes_review_without_crash) ... ok
+test_pass_without_agent_evidence_rejected (test_nodes.ValidateTests.test_pass_without_agent_evidence_rejected) ... ok
+test_rule_quote_must_be_complete_policy (test_nodes.ValidateTests.test_rule_quote_must_be_complete_policy) ... ok
+test_rule_quote_must_belong_to_same_rule (test_nodes.ValidateTests.test_rule_quote_must_belong_to_same_rule) ... ok
+test_unknown_is_not_pass (test_nodes.ValidateTests.test_unknown_is_not_pass) ... ok
+test_valid_pass_routes_logistics (test_nodes.ValidateTests.test_valid_pass_routes_logistics) ... ok
+test_verified_violation_is_separate_from_review (test_nodes.ValidateTests.test_verified_violation_is_separate_from_review) ... ok
+test_whole_input_invalid (test_nodes.ValidateTests.test_whole_input_invalid) ... ok
+test_duplicate_result_is_not_correct_answer (test_scoring.ScoringTests.test_duplicate_result_is_not_correct_answer) ... ok
+test_missing_case_stays_in_denominator (test_scoring.ScoringTests.test_missing_case_stays_in_denominator) ... ok
+test_wrong_rule_label_is_reported (test_scoring.ScoringTests.test_wrong_rule_label_is_reported) ... ok
+
+----------------------------------------------------------------------
+Ran 44 tests in 0.560s
+
+OK

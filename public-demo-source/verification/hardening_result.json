@@ -1,0 +1,616 @@
+{
+  "started_utc": "2026-10-24T12:55:46.049449+00:00",
+  "finished_utc": "2026-10-24T12:55:46.052521+00:00",
+  "kind": "deterministic_boundary_no_llm",
+  "result": {
+    "hardened_enough": true,
+    "total": 34,
+    "passed": 34,
+    "cases": [
+      {
+        "name": "rule_quote_verbatim_pass",
+        "passed": true,
+        "expectation": {
+          "ok": true,
+          "note": "expected needs_review=False"
+        },
+        "actual_output": {
+          "category": "物流配送",
+          "category_valid": true,
+          "qc_status": "pass",
+          "needs_review": false,
+          "review_reasons": [],
+          "validation_issues": []
+        }
+      },
+      {
+        "name": "rule_quote_short_substring",
+        "passed": true,
+        "expectation": {
+          "ok": true,
+          "note": "expected needs_review=True"
+        },
+        "actual_output": {
+          "category": "物流配送",
+          "category_valid": true,
+          "qc_status": "undetermined",
+          "needs_review": true,
+          "review_reasons": [
+            "代码校验异常，整条降级unknown并人工复核",
+            "(1)check R01 的rule_quote未逐字匹配规则库policy原文(假引用或标点差异): '客服'"
+          ],
+          "validation_issues": [
+            "check R01 的rule_quote未逐字匹配规则库policy原文(假引用或标点差异): '客服'"
+          ]
+        }
+      },
+      {
+        "name": "rule_quote_punct_diff",
+        "passed": true,
+        "expectation": {
+          "ok": true,
+          "note": "expected needs_review=True"
+        },
+        "actual_output": {
+          "category": "物流配送",
+          "category_valid": true,
+          "qc_status": "undetermined",
+          "needs_review": true,
+          "review_reasons": [
+            "代码校验异常，整条降级unknown并人工复核",
+            "(1)check R01 的rule_quote未逐字匹配规则库policy原文(假引用或标点差异): '客服不得辱骂、嘲讽或贬低客户'"
+          ],
+          "validation_issues": [
+            "check R01 的rule_quote未逐字匹配规则库policy原文(假引用或标点差异): '客服不得辱骂、嘲讽或贬低客户'"
+          ]
+        }
+      },
+      {
+        "name": "unknown_but_model_needs_review_false",
+        "passed": true,
+        "expectation": {
+          "ok": true,
+          "note": "expect qc_status=undetermined needs_review=True(须为代码强制而非模型自报)"
+        },
+        "actual_output": {
+          "category": "物流配送",
+          "category_valid": true,
+          "qc_status": "undetermined",
+          "needs_review": true,
+          "review_reasons": [
+            "存在任一规则判定为unknown，代码强制人工复核"
+          ],
+          "validation_issues": [],
+          "input_model_needs_review": false,
+          "input_confidence": 0.95
+        }
+      },
+      {
+        "name": "unknown_with_fail_still_review",
+        "passed": true,
+        "expectation": {
+          "ok": true,
+          "note": "expect qc_status=violation needs_review=True(须为代码强制而非模型自报)"
+        },
+        "actual_output": {
+          "category": "物流配送",
+          "category_valid": true,
+          "qc_status": "violation",
+          "needs_review": true,
+          "review_reasons": [
+            "存在任一规则判定为unknown，代码强制人工复核"
+          ],
+          "validation_issues": [],
+          "input_model_needs_review": false,
+          "input_confidence": 0.95
+        }
+      },
+      {
+        "name": "all_unknown_model_false",
+        "passed": true,
+        "expectation": {
+          "ok": true,
+          "note": "expect qc_status=undetermined needs_review=True(须为代码强制而非模型自报)"
+        },
+        "actual_output": {
+          "category": "物流配送",
+          "category_valid": true,
+          "qc_status": "undetermined",
+          "needs_review": true,
+          "review_reasons": [
+            "存在任一规则判定为unknown，代码强制人工复核"
+          ],
+          "validation_issues": [],
+          "input_model_needs_review": false,
+          "input_confidence": 0.95
+        }
+      },
+      {
+        "name": "category_evidence_empty_review",
+        "passed": true,
+        "expectation": {
+          "ok": true,
+          "note": "确认分类但category_evidence=[] → 不接受，降级unknown并人工复核"
+        },
+        "actual_output": {
+          "category": "物流配送",
+          "category_valid": true,
+          "qc_status": "undetermined",
+          "needs_review": true,
+          "review_reasons": [
+            "代码校验异常，整条降级unknown并人工复核",
+            "(1)category_evidence为空数组：确认分类须至少有1条customer原文证据"
+          ],
+          "validation_issues": [
+            "category_evidence为空数组：确认分类须至少有1条customer原文证据"
+          ]
+        }
+      },
+      {
+        "name": "hard_category_empty_list",
+        "passed": true,
+        "expectation": {
+          "ok": true,
+          "note": "非法输入须转人工且整条降至 undetermined"
+        },
+        "actual_output": {
+          "category": "",
+          "category_valid": false,
+          "qc_status": "undetermined",
+          "needs_review": true,
+          "review_reasons": [
+            "代码校验异常，整条降级unknown并人工复核",
+            "(1)缺少category字段",
+            "(2)category必须是字符串: list"
+          ],
+          "validation_issues": [
+            "缺少category字段",
+            "category必须是字符串: list"
+          ]
+        }
+      },
+      {
+        "name": "hard_category_empty_dict",
+        "passed": true,
+        "expectation": {
+          "ok": true,
+          "note": "非法输入须转人工且整条降至 undetermined"
+        },
+        "actual_output": {
+          "category": "",
+          "category_valid": false,
+          "qc_status": "undetermined",
+          "needs_review": true,
+          "review_reasons": [
+            "代码校验异常，整条降级unknown并人工复核",
+            "(1)缺少category字段",
+            "(2)category必须是字符串: dict"
+          ],
+          "validation_issues": [
+            "缺少category字段",
+            "category必须是字符串: dict"
+          ]
+        }
+      },
+      {
+        "name": "hard_rule_id_dict",
+        "passed": true,
+        "expectation": {
+          "ok": true,
+          "note": "非法输入须转人工且整条降至 undetermined"
+        },
+        "actual_output": {
+          "category": "物流配送",
+          "category_valid": true,
+          "qc_status": "undetermined",
+          "needs_review": true,
+          "review_reasons": [
+            "代码校验异常，整条降级unknown并人工复核",
+            "(1)check R01 的rule_id与键不符: {}"
+          ],
+          "validation_issues": [
+            "check R01 的rule_id与键不符: {}"
+          ]
+        }
+      },
+      {
+        "name": "hard_extra_check_key",
+        "passed": true,
+        "expectation": {
+          "ok": true,
+          "note": "非法输入须转人工且整条降至 undetermined"
+        },
+        "actual_output": {
+          "category": "物流配送",
+          "category_valid": true,
+          "qc_status": "undetermined",
+          "needs_review": true,
+          "review_reasons": [
+            "代码校验异常，整条降级unknown并人工复核",
+            "(1)checks必须恰好包含R01/R02/R03，实际: ['R01', 'R02', 'R03', 'R04']"
+          ],
+          "validation_issues": [
+            "checks必须恰好包含R01/R02/R03，实际: ['R01', 'R02', 'R03', 'R04']"
+          ]
+        }
+      },
+      {
+        "name": "hard_missing_rule_quote",
+        "passed": true,
+        "expectation": {
+          "ok": true,
+          "note": "非法输入须转人工且整条降至 undetermined"
+        },
+        "actual_output": {
+          "category": "物流配送",
+          "category_valid": true,
+          "qc_status": "undetermined",
+          "needs_review": true,
+          "review_reasons": [
+            "代码校验异常，整条降级unknown并人工复核",
+            "(1)check R01 缺少rule_quote"
+          ],
+          "validation_issues": [
+            "check R01 缺少rule_quote"
+          ]
+        }
+      },
+      {
+        "name": "hard_missing_reason",
+        "passed": true,
+        "expectation": {
+          "ok": true,
+          "note": "非法输入须转人工且整条降至 undetermined"
+        },
+        "actual_output": {
+          "category": "物流配送",
+          "category_valid": true,
+          "qc_status": "undetermined",
+          "needs_review": true,
+          "review_reasons": [
+            "代码校验异常，整条降级unknown并人工复核",
+            "(1)check R01 缺少reason"
+          ],
+          "validation_issues": [
+            "check R01 缺少reason"
+          ]
+        }
+      },
+      {
+        "name": "hard_missing_check_evidence",
+        "passed": true,
+        "expectation": {
+          "ok": true,
+          "note": "非法输入须转人工且整条降至 undetermined"
+        },
+        "actual_output": {
+          "category": "物流配送",
+          "category_valid": true,
+          "qc_status": "undetermined",
+          "needs_review": true,
+          "review_reasons": [
+            "代码校验异常，整条降级unknown并人工复核",
+            "(1)check R01 pass必须有至少一条客服原文证据"
+          ],
+          "validation_issues": [
+            "check R01 pass必须有至少一条客服原文证据"
+          ]
+        }
+      },
+      {
+        "name": "hard_illegal_category",
+        "passed": true,
+        "expectation": {
+          "ok": true,
+          "note": "非法输入须转人工且整条降至 undetermined"
+        },
+        "actual_output": {
+          "category": "审批",
+          "category_valid": false,
+          "qc_status": "undetermined",
+          "needs_review": true,
+          "review_reasons": [
+            "代码校验异常，整条降级unknown并人工复核",
+            "(1)category不属于合法五类: 审批"
+          ],
+          "validation_issues": [
+            "category不属于合法五类: 审批"
+          ]
+        }
+      },
+      {
+        "name": "hard_nan_confidence",
+        "passed": true,
+        "expectation": {
+          "ok": true,
+          "note": "NaN 置信度须转人工"
+        },
+        "actual_output": {
+          "category": "物流配送",
+          "category_valid": true,
+          "qc_status": "undetermined",
+          "needs_review": true,
+          "review_reasons": [
+            "代码校验异常，整条降级unknown并人工复核",
+            "(1)category_confidence必须是有限数字"
+          ],
+          "validation_issues": [
+            "category_confidence必须是有限数字"
+          ]
+        }
+      },
+      {
+        "name": "cat_evidence_not_customer",
+        "passed": true,
+        "expectation": {
+          "ok": true,
+          "note": "分类证据须引用 customer 连续原文"
+        },
+        "actual_output": {
+          "category": "物流配送",
+          "category_valid": true,
+          "qc_status": "undetermined",
+          "needs_review": true,
+          "review_reasons": [
+            "代码校验异常，整条降级unknown并人工复核",
+            "(1)分类证据只允许来自customer消息，但index 1 角色为 agent"
+          ],
+          "validation_issues": [
+            "分类证据只允许来自customer消息，但index 1 角色为 agent"
+          ]
+        }
+      },
+      {
+        "name": "check_evidence_not_agent",
+        "passed": true,
+        "expectation": {
+          "ok": true,
+          "note": "质检证据须引用 agent 连续原文"
+        },
+        "actual_output": {
+          "category": "物流配送",
+          "category_valid": true,
+          "qc_status": "undetermined",
+          "needs_review": true,
+          "review_reasons": [
+            "代码校验异常，整条降级unknown并人工复核",
+            "(1)质检证据只允许来自agent消息，但index 0 角色为 customer"
+          ],
+          "validation_issues": [
+            "质检证据只允许来自agent消息，但index 0 角色为 customer"
+          ]
+        }
+      },
+      {
+        "name": "invalid_json_text",
+        "passed": true,
+        "expectation": {
+          "ok": true,
+          "note": "非法 JSON 须转人工"
+        },
+        "actual_output": {
+          "qc_status": "undetermined",
+          "needs_review": true,
+          "issues": [
+            "无效JSON: Expecting value: line 1 column 1 (char 0)"
+          ]
+        }
+      },
+      {
+        "name": "valid_input_ok",
+        "passed": true,
+        "expectation": {
+          "ok": true,
+          "note": "合法输入应通过"
+        },
+        "actual_output": {
+          "validation_valid": true,
+          "validation_error": "",
+          "ticket_id": "T1",
+          "messages": [
+            {
+              "role": "customer",
+              "text": "我的包裹三天没更新了。"
+            },
+            {
+              "role": "agent",
+              "text": "您好，我帮您联系物流核实。"
+            }
+          ]
+        }
+      },
+      {
+        "name": "val_ticket_id_empty_list",
+        "passed": true,
+        "expectation": {
+          "ok": true,
+          "note": "应明确校验不通过(转人工)"
+        },
+        "actual_output": {
+          "validation_valid": false,
+          "validation_error": "ticket_id不能为空",
+          "ticket_id": "",
+          "messages": []
+        }
+      },
+      {
+        "name": "val_ticket_id_empty",
+        "passed": true,
+        "expectation": {
+          "ok": true,
+          "note": "应明确校验不通过(转人工)"
+        },
+        "actual_output": {
+          "validation_valid": false,
+          "validation_error": "ticket_id不能为空",
+          "ticket_id": "",
+          "messages": []
+        }
+      },
+      {
+        "name": "val_only_one_role",
+        "passed": true,
+        "expectation": {
+          "ok": true,
+          "note": "应明确校验不通过(转人工)"
+        },
+        "actual_output": {
+          "validation_valid": false,
+          "validation_error": "消息条数必须为2至100条，实际1条",
+          "ticket_id": "T",
+          "messages": []
+        }
+      },
+      {
+        "name": "val_illegal_role",
+        "passed": true,
+        "expectation": {
+          "ok": true,
+          "note": "应明确校验不通过(转人工)"
+        },
+        "actual_output": {
+          "validation_valid": false,
+          "validation_error": "第1条消息角色不合法: admin（仅允许customer/agent）",
+          "ticket_id": "T",
+          "messages": []
+        }
+      },
+      {
+        "name": "val_over_char_limit",
+        "passed": true,
+        "expectation": {
+          "ok": true,
+          "note": "应明确校验不通过(转人工)"
+        },
+        "actual_output": {
+          "validation_valid": false,
+          "validation_error": "对话全文合计20002字符超过20000上限，不截断，转人工复核",
+          "ticket_id": "T",
+          "messages": []
+        }
+      },
+      {
+        "name": "rules_complete_ok",
+        "passed": true,
+        "expectation": {
+          "ok": true,
+          "note": "完整三条应通过"
+        },
+        "actual_output": {
+          "rules_ok": true,
+          "reason": "规则覆盖完整"
+        }
+      },
+      {
+        "name": "rules_missing_r03",
+        "passed": true,
+        "expectation": {
+          "ok": true,
+          "note": "缺 R03 应失败"
+        },
+        "actual_output": {
+          "rules_ok": false,
+          "reason": "规则知识库检索不完整，缺失规则: ['R03']，转人工复核，不凭常识补齐"
+        }
+      },
+      {
+        "name": "rules_same_id_conflict",
+        "passed": true,
+        "expectation": {
+          "ok": true,
+          "note": "同 ID 冲突应失败"
+        },
+        "actual_output": {
+          "rules_ok": false,
+          "reason": "检索到未授权规则ID: ，与规则库不符"
+        }
+      },
+      {
+        "name": "batch_parse_ok",
+        "passed": true,
+        "expectation": {
+          "ok": true,
+          "note": "合法批次应通过"
+        },
+        "actual_output": {
+          "parse_ok": true,
+          "error": "",
+          "n": 2,
+          "dup": []
+        }
+      },
+      {
+        "name": "batch_parse_dup",
+        "passed": true,
+        "expectation": {
+          "ok": true,
+          "note": "重复 ID 整批拒绝"
+        },
+        "actual_output": {
+          "parse_ok": false,
+          "error": "批次中ticket_id重复，整批拒绝: ['A']",
+          "n": 0,
+          "dup": [
+            "A"
+          ]
+        }
+      },
+      {
+        "name": "batch_parse_missing_id",
+        "passed": true,
+        "expectation": {
+          "ok": true,
+          "note": "缺 ID 整批拒绝"
+        },
+        "actual_output": {
+          "parse_ok": false,
+          "error": "第0条记录缺失ticket_id",
+          "n": 0,
+          "dup": []
+        }
+      },
+      {
+        "name": "batch_parse_empty",
+        "passed": true,
+        "expectation": {
+          "ok": true,
+          "note": "空批次拒绝"
+        },
+        "actual_output": {
+          "parse_ok": false,
+          "error": "记录数必须为1至50条，实际0条",
+          "n": 0,
+          "dup": []
+        }
+      },
+      {
+        "name": "batch_parse_over50",
+        "passed": true,
+        "expectation": {
+          "ok": true,
+          "note": "超过50条拒绝"
+        },
+        "actual_output": {
+          "parse_ok": false,
+          "error": "记录数必须为1至50条，实际51条",
+          "n": 0,
+          "dup": []
+        }
+      },
+      {
+        "name": "batch_aggregate_revalidation",
+        "passed": true,
+        "expectation": {
+          "ok": true,
+          "note": "损坏单条/客服原话缺失不计 pass，转 unknown"
+        },
+        "actual_output": {
+          "pass_count": 1,
+          "undetermined_count": 2,
+          "violation_count": 0,
+          "review_count": 2
+        }
+      }
+    ]
+  }
+}

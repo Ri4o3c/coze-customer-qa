@@ -1,0 +1,40 @@
+{
+  "summary_json": {
+    "total": 2,
+    "pass_count": 1,
+    "violation_count": 0,
+    "undetermined_count": 1,
+    "review_count": 1,
+    "category_counts": {
+      "物流配送": 1,
+      "无分类": 1
+    },
+    "rule_violation_counts": {},
+    "review_records": [
+      "PUBLIC-B02: 批量复验未通过：checks必须恰好含R01/R02/R03，实际: []；check R01 不是对象；check R02 不是对象；check R03 不是对象",
+      "PUBLIC-B02: 输入校验未通过：消息条数必须为2至100条，实际1条；规则知识库完整性校验未通过：缺少规则；批量复验未通过：checks必须恰好含R01/R02/R03，实际: []；check R01 不是对象；check R02 不是对象；check R03 不是对象"
+    ],
+    "revalidation_failed_count": 1,
+    "results": [
+      {
+        "ticket_id": "PUBLIC-B01",
+        "qc_status": "pass",
+        "needs_review": false,
+        "category": "物流配送",
+        "category_valid": true,
+        "revalidation_ok": true,
+        "result_json": "{\"schema_version\": 1, \"ticket_id\": \"PUBLIC-B01\", \"category\": \"物流配送\", \"category_valid\": true, \"category_confidence\": 1.0, \"category_evidence\": [{\"message_index\": 0, \"quote\": \"我的包裹三天没更新了。\"}], \"summary\": \"客户反馈包裹物流信息三天未更新，客服表示将帮忙联系物流核实情况。\", \"checks\": {\"R01\": {\"rule_id\": \"R01\", \"status\": \"pass\", \"rule_quote\": \"客服不得辱骂、嘲讽或贬低客户。\", \"reason\": \"客服回复礼貌，未出现辱骂、嘲讽或贬低客户的行为。\", \"evidence\": [{\"message_index\": 1, \"quote\": \"您好，我帮您联系物流核实。\"}]}, \"R02\": {\"rule_id\": \"R02\", \"status\": \"pass\", \"rule_quote\": \"客服不得索取客户的账户密码、支付密码或支付验证码。\", \"reason\": \"客服未向客户索取任何账户密码、支付密码或支付验证码类信息。\", \"evidence\": [{\"message_index\": 1, \"quote\": \"您好，我帮您联系物流核实。\"}]}, \"R03\": {\"rule_id\": \"R03\", \"status\": \"pass\", \"rule_quote\": \"退款须经售后审核；审核通过后预计1至3个工作日原路退回，客服不得保证具体到账时点。\", \"reason\": \"本次对话未涉及退款相关内容，客服未作出任何退款到账时点的承诺。\", \"evidence\": [{\"message_index\": 1, \"quote\": \"您好，我帮您联系物流核实。\"}]}}, \"qc_status\": \"pass\", \"needs_review\": false, \"review_reasons\": [], \"route\": \"物流客服\", \"suggested_route\": \"物流客服\", \"action\": \"suggest_only\", \"validation\": {\"valid_json\": true, \"fields_complete\": true, \"evidence_verified\": true, \"roles_checked\": \"角色仅customer/agent已在输入校验阶段完成\", \"issues\": [], \"note\": \"引用存在性已由代码校验，语义是否成立仍需人工确认\"}, \"semantic_review\": {\"needs_semantic_review\": false, \"confidence_below_threshold\": false, \"model_requested_review\": false, \"degraded\": false, \"manual_confirmation_pending\": \"代码验证引用存在不等于语义已人工确认\"}}"
+      },
+      {
+        "ticket_id": "PUBLIC-B02",
+        "qc_status": "undetermined",
+        "needs_review": true,
+        "category": "",
+        "category_valid": false,
+        "revalidation_ok": false,
+        "result_json": "{\"schema_version\": 1, \"ticket_id\": \"PUBLIC-B02\", \"category\": \"\", \"category_valid\": false, \"category_confidence\": 0.0, \"category_evidence\": [], \"summary\": \"\", \"checks\": {}, \"qc_status\": \"undetermined\", \"needs_review\": true, \"review_reasons\": [\"输入校验未通过：消息条数必须为2至100条，实际1条\", \"规则知识库完整性校验未通过：缺少规则\"], \"route\": \"人工复核队列\", \"suggested_route\": \"综合客服\", \"action\": \"suggest_only\", \"validation\": {}, \"semantic_review\": {}}"
+      }
+    ]
+  },
+  "report": "== 客服质检与工单分流 - 批量汇总报告 ==\n总记录数 total：2\npass：1 | violation：0 | undetermined：1（合计=2）\n需人工复核 review_count：1（独立维度，不与前三者相加）\n分类统计：物流配送=1; 无分类=1\n规则违规统计：无\n复核记录：\n  - PUBLIC-B02: 批量复验未通过：checks必须恰好含R01/R02/R03，实际: []；check R01 不是对象；check R02 不是对象；check R03 不是对象\n  - PUBLIC-B02: 输入校验未通过：消息条数必须为2至100条，实际1条；规则知识库完整性校验未通过：缺少规则；批量复验未通过：checks必须恰好含R01/R02/R03，实际: []；check R01 不是对象；check R02 不是对象；check R03 不是对象\n逐条结果：\n  PUBLIC-B01: pass | 分类=物流配送 | needs_review=False\n  PUBLIC-B02: undetermined | 分类= | needs_review=True"
+}
